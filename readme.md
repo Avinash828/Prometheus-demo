@@ -10,7 +10,7 @@
 
 ### Deploying MySql application
 
-Create Mysql deployment with service as a NodePort. Below is the `mysql-deployment.yml` file.
+- Create Mysql deployment with service as a NodePort. Below is the `mysql-deployment.yml` file.
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -54,11 +54,11 @@ spec:
         targetPort: 3306
         nodePort: 30007
 ```
-Apply the deployment.
+- Apply the deployment.
 ```bash
 kubectl apply -f mysql-deployment.yaml
 ```
-Create Screte using below `mysql-secret.yaml` file.
+- Create Screte using below `mysql-secret.yaml` file.
 
 ```yaml
 apiVersion: v1
@@ -69,7 +69,7 @@ type: kubernetes.io/basic-auth
 stringData:
   password: test1234
 ```
-Apply thr above secret.
+Apply the above secret.
 ```bash
 kubectl apply -f mysql-secret.yaml
 ```
@@ -80,7 +80,7 @@ helm install prometheus prometheus-community/kube-prometheus-stack
 ```
 ### Deploying Mysql-exporter
 
-Use below file for scaping metrics from deployed Mysql Server.
+- Use below file for scaping metrics from deployed Mysql Server.
 ```yaml
 mysql:
   db: ""
@@ -101,7 +101,7 @@ MySql Database
 ```
 ``**Note:-** Replace host,pass` and `port` according to your requirement.``
 
-Install Mysql-exporter using below helm command
+- Install Mysql-exporter using below helm command
 
 ```bash
 helm upgrade --install mysql-exporter prometheus-community/prometheus-mysql-exporter -f applyfile.yml

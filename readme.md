@@ -78,6 +78,18 @@ kubectl apply -f mysql-secret.yaml
 ```bash
 helm install prometheus prometheus-community/kube-prometheus-stack
 ```
+### Creating Prometheus Server service as a NodePort
+We have to create the Prometheus server service as a NodePort service for exposing it to Grafana API's.
+Use below command for editing Prometheus service
+```bash
+kubectl edit svc/prometheus-kube-prometheus-prometheus
+```
+```bash
+kubectl get svc -A -o wide
+```
+![image](https://github.com/user-attachments/assets/fc33ccbf-56a4-49df-ac39-6832e307a0b4)
+
+
 ### Deploying Mysql-exporter
 
 - Use below file for scaping metrics from deployed Mysql Server.
